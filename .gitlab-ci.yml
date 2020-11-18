@@ -1,0 +1,23 @@
+image: mcr.microsoft.com/dotnet/core/sdk
+stages:
+ - build
+ - test
+ - publish
+build:
+ stage: build
+ script:
+  - 'dotnet restore'
+  - 'dotnet build'
+test:
+ stage: test
+ script:
+  - 'dotnet test test/test.csproj'
+publish:
+ stage: publish
+ script:
+  - 'dotnet publish NewsAPI/NewsAPI.csproj'
+ artifacts:
+  paths:
+   - '/Thoufeeq.Liakath/newsapp-step4-boilerplate/NewsAPI/bin/Debug/netcoreapp3.1/publish/'
+  
+  
